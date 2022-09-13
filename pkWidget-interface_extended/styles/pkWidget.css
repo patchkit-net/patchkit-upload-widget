@@ -1,0 +1,906 @@
+.pkWidget {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #060B08;
+  background-color: white;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.pkWidget .widgetTopBar {
+  width: 100%;
+  min-height: 80px;
+}
+
+.pkWidget .widgetContent {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.pkWidget .widgetModal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: 1;
+  visibility: 'visible';
+  -webkit-transition: visibility .5s ease-out, opacity .5s ease-out;
+  transition: visibility .5s ease-out, opacity .5s ease-out;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pkWidget .widgetModal.hidden {
+  pointer-events: none;
+  opacity: 0;
+  visibility: 'hidden';
+}
+
+.pkWidget .widgetModal .modalClose {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+}
+
+.pkWidget .widgetModal .modalClose:hover {
+  color: #d63939;
+}
+
+.pkWidget .widgetModal div {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pkWidget .widgetModal div .primary {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.pkWidget .widgetModal div .secondary {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.pkWidget .widgetModal div .form {
+  width: 100%;
+  height: 56px;
+  margin-top: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pkWidget .widgetModal div .form #signUp {
+  width: 176px;
+  margin-left: 12px;
+}
+
+.pkWidget input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border: 1px solid #CED2D2;
+  border-radius: 16px;
+  background-color: white;
+  outline: none;
+  color: #848E8E;
+  font-family: 'Inter';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  -webkit-transition: border-color .3s ease;
+  transition: border-color .3s ease;
+}
+
+.pkWidget input:focus, .pkWidget input:hover {
+  border-color: #848E8E;
+}
+
+.pkWidget span.primary {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.pkWidget span.secondary {
+  font-size: 14px;
+  color: #848E8E;
+}
+
+.pkWidget span mark {
+  background-color: transparent;
+  color: #00C059;
+}
+
+.pkWidget .btn {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 16px;
+  background-color: #00C059;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color .3s ease, -webkit-filter .3s ease;
+  transition: background-color .3s ease, -webkit-filter .3s ease;
+  transition: filter .3s ease, background-color .3s ease;
+  transition: filter .3s ease, background-color .3s ease, -webkit-filter .3s ease;
+}
+
+.pkWidget .btn:hover {
+  -webkit-filter: brightness(1.1);
+          filter: brightness(1.1);
+}
+
+.pkWidget .btn:active {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+.pkWidget .btn.disabled {
+  pointer-events: none;
+  background-color: #CED2D2;
+}
+
+.pkWidget .btn-secondary {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid #E8F1F1;
+  border-radius: 16px;
+  background-color: white;
+  font-size: 14px;
+  font-weight: 600;
+  color: #060B08;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: border-color .3s ease;
+  transition: border-color .3s ease;
+}
+
+.pkWidget .btn-secondary:hover {
+  border-color: #CED2D2;
+}
+
+.pkWidget .btn-secondary:active {
+  background-color: #E8F1F1;
+}
+
+.pkWidget .widgetComponent {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pkWidget .widgetAlert {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  bottom: 24px;
+  z-index: 2;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  width: 100%;
+  padding: 16px 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: 'Inter';
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 192, 89, 0.9);
+  border-radius: 10px;
+}
+
+.pkWidget .widgetAlert * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pkWidget .widgetAlert.error {
+  background-color: rgba(214, 57, 57, 0.9);
+  color: white;
+}
+
+.pkWidget .widgetAlert.info {
+  background-color: rgba(66, 133, 243, 0.9);
+  color: white;
+}
+
+.pkWidget .widgetAlert .closeAlert {
+  padding: 0 32px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.pkWidget .widgetAlert .icon {
+  position: absolute;
+  left: 0;
+  opacity: .7;
+  font-size: 24px;
+}
+
+.pkWidget .stepProgress {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  margin-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #848E8E;
+  font-family: 'Inter';
+  font-size: 14px;
+}
+
+.pkWidget .stepProgress .step {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 400;
+}
+
+.pkWidget .stepProgress .step .name {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pkWidget .stepProgress .step .name span {
+  width: 25px;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  border: 1px solid #E8F1F1;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: width .3s ease-out, height .3s ease-out;
+  transition: width .3s ease-out, height .3s ease-out;
+}
+
+.pkWidget .stepProgress .step .description {
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: font-size .1s ease-out;
+  transition: font-size .1s ease-out;
+}
+
+.pkWidget .stepProgress .step.active .name span {
+  -webkit-animation: .2s grow;
+          animation: .2s grow;
+  -webkit-transition: none;
+  transition: none;
+  width: 33px;
+  height: 33px;
+  border-color: #060B08;
+  background-color: #060B08;
+  color: white;
+}
+
+.pkWidget .stepProgress .step.active .description {
+  color: #060B08;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pkWidget .stepProgress .step.done .name span {
+  border-color: #060B08;
+  background-color: #060B08;
+  color: white;
+}
+
+.pkWidget .stepProgress .step.done .description {
+  color: #060B08;
+}
+
+.pkWidget .stepProgress .bar {
+  height: 1px;
+  background-color: #E8F1F1;
+}
+
+.pkWidget .stepProgress .bar::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #060B08;
+  -webkit-transition: width .3s ease-out;
+  transition: width .3s ease-out;
+}
+
+.pkWidget .stepProgress .bar.active::after {
+  width: 100%;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.pkWidget .processButton {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+  margin: 24px 0;
+}
+
+.pkWidget .processButton .icon {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.pkWidget .fileInputLabel {
+  width: 100%;
+  padding-bottom: 8px;
+  font-size: 14px;
+  color: #848E8E;
+}
+
+.pkWidget .platformSelectLabel {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  color: #848E8E;
+}
+
+.pkWidget .fileInput {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  padding: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  border-radius: 48px;
+  -webkit-transition: height 1s cubic-bezier(0, 0.5, 0, 1), border-radius 1s ease, background-color 1s ease !important;
+  transition: height 1s cubic-bezier(0, 0.5, 0, 1), border-radius 1s ease, background-color 1s ease !important;
+}
+
+.pkWidget .fileInput .dashed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.pkWidget .fileInput .dashed rect {
+  stroke-linecap: round;
+  -webkit-transition: stroke-dasharray .3s ease, stroke-dashoffset .3s ease, stroke .3s ease;
+  transition: stroke-dasharray .3s ease, stroke-dashoffset .3s ease, stroke .3s ease;
+}
+
+.pkWidget .fileInput.hover .dashed rect, .pkWidget .fileInput:hover .dashed rect {
+  stroke: #00C059;
+  stroke-dashoffset: 1.5%;
+  stroke-dasharray: 6% 0%;
+}
+
+.pkWidget .fileInput.error .dashed rect {
+  stroke: #d63939 !important;
+}
+
+.pkWidget .fileInput.componentCollapse {
+  height: 72px;
+  padding: 0;
+  padding-left: 20px;
+  border-radius: 16px;
+  background-color: #E8F1F1;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.pkWidget .fileInput.componentCollapse .dashed {
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+
+.pkWidget .fileInput.componentCollapse .icon {
+  font-size: 32px;
+  margin: 0;
+}
+
+.pkWidget .fileInput.componentCollapse .fileInfo {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 20px;
+}
+
+.pkWidget .fileInput.componentCollapse .fileInfo .primary {
+  margin-bottom: 8px;
+}
+
+.pkWidget .fileInput.componentCollapse .cancel {
+  height: 72px;
+  width: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.pkWidget .fileInput.componentCollapse .cancel .icon {
+  font-size: 16px;
+  opacity: .8;
+}
+
+.pkWidget .fileInput.componentCollapse .cancel:hover .icon {
+  opacity: 1;
+  color: #d63939;
+}
+
+.pkWidget .fileInput .ring {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 19px;
+}
+
+.pkWidget .fileInput .ring .progressRing {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+  font-family: 'JetBrains Mono';
+}
+
+.pkWidget .fileInput .ring .progressRing span {
+  position: absolute;
+}
+
+.pkWidget .fileInput input.file {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pkWidget .fileInput .icon {
+  margin-bottom: 16px;
+  font-size: 72px;
+}
+
+.pkWidget .platformSelect {
+  width: 100%;
+}
+
+.pkWidget .platformSelect .dropdown {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  font-family: 'Inter';
+  font-size: 16px;
+  font-weight: 400;
+  color: #060B08;
+}
+
+.pkWidget .platformSelect .dropdown .button {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  padding-left: 20px;
+  padding-right: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: white;
+  border: 1px solid #CED2D2;
+  border-radius: 16px;
+  -webkit-transition: border-color .3s ease;
+  transition: border-color .3s ease;
+}
+
+.pkWidget .platformSelect .dropdown .button .arrow {
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease;
+}
+
+.pkWidget .platformSelect .dropdown .button .icon {
+  margin-right: 6px;
+}
+
+.pkWidget .platformSelect .dropdown .button:hover {
+  border-color: #848E8E;
+}
+
+.pkWidget .platformSelect .dropdown .optionsContainer {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  padding: 8px;
+  background-color: white;
+  -webkit-box-shadow: 0px 4px 16px rgba(6, 11, 8, 0.12);
+          box-shadow: 0px 4px 16px rgba(6, 11, 8, 0.12);
+  border-radius: 16px;
+  -webkit-transition: visibility .3s ease, opacity .3s ease;
+  transition: visibility .3s ease, opacity .3s ease;
+}
+
+.pkWidget .platformSelect .dropdown .optionsContainer .option {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 12px;
+  -webkit-transition: background-color .3s ease, color .3s ease;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.pkWidget .platformSelect .dropdown .optionsContainer .option .icon {
+  margin-right: 6px;
+}
+
+.pkWidget .platformSelect .dropdown .optionsContainer .option:hover {
+  background-color: #E8F1F1;
+  color: #4285F3;
+}
+
+.pkWidget .platformSelect .dropdown.open .button {
+  border-color: #848E8E;
+}
+
+.pkWidget .platformSelect .dropdown.open .button .arrow {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.pkWidget .platformSelect .dropdown.open .optionsContainer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pkWidget .widgetProgress {
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pkWidget .widgetProgress .text {
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 800;
+}
+
+.pkWidget .widgetProgress .bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #E8F1F1;
+  overflow: hidden;
+}
+
+.pkWidget .widgetProgress .bar .fill {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 8px;
+  background-color: #060B08;
+  -webkit-transition: width .5s ease-out;
+  transition: width .5s ease-out;
+}
+
+.pkWidget .widgetProgress .buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 24px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.pkWidget .widgetProgress .buttons .cancelButton {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 48%;
+  height: 56px;
+  padding: 0 24px;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+  white-space: nowrap;
+}
+
+.pkWidget .widgetProgress .buttons .cancelButton .icon {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.pkWidget .widgetProgress .buttons .downloadButton {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 48%;
+  height: 56px;
+  padding: 0 24px;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+  white-space: nowrap;
+}
+
+.pkWidget .widgetProgress .buttons .downloadButton .icon {
+  margin-right: 8px;
+}
+
+@media (max-width: 1000px) {
+  .pkWidget .widgetContent {
+    width: 90%;
+  }
+  .pkWidget .widgetAlert {
+    font-size: 12px;
+  }
+  .pkWidget .stepProgress .step .name {
+    font-size: 12px;
+  }
+  .pkWidget .stepProgress .step .description {
+    font-size: 10px;
+  }
+  .pkWidget .stepProgress .step.active .description {
+    font-size: 12px;
+  }
+  .pkWidget span.primary {
+    font-size: 12px;
+  }
+  .pkWidget span.secondary {
+    font-size: 10px;
+  }
+  .pkWidget .fileInputLabel {
+    font-size: 12px;
+  }
+  .pkWidget .platformSelectLabel {
+    font-size: 12px;
+  }
+  .pkWidget .platformSelect .dropdown {
+    font-size: 12px;
+  }
+  .pkWidget .btn,
+  .pkWidget .btn-secondary {
+    font-size: 12px;
+  }
+}
+/*# sourceMappingURL=pkWidget.css.map */

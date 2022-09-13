@@ -1,0 +1,804 @@
+$colorBackgroundMain: white;
+$colorBlackMain: #060B08;
+$colorGrayMain: #848E8E;
+$colorGrayLight: #CED2D2;
+$colorGraySecond: #E8F1F1;
+$colorGreenMain: #00C059;
+$colorGreenSecond: #B1D8BC;
+$colorRedMain: #d63939;
+$colorBlueMain: #4285F3;
+
+.pkWidget {
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: $colorBlackMain;
+  
+  background-color: $colorBackgroundMain;
+  
+  position: relative;
+  user-select: none;
+
+  .widgetTopBar {
+    width: 100%;
+    min-height: 80px;
+  }
+  .widgetContent {
+    position: relative;
+    width: 50%;
+    height: 100%;
+  }
+
+  .widgetModal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+
+    opacity: 1;
+    visibility: 'visible';
+    transition: visibility .5s ease-out, opacity .5s ease-out;
+
+    &.hidden {
+      pointer-events: none;
+      opacity: 0;
+      visibility: 'hidden';
+    }
+
+    background-color: rgba($colorBackgroundMain, .95);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .modalClose {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 24px;
+
+      &:hover {
+        color: $colorRedMain;
+      }
+    }
+    
+    div {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .primary {
+        font-size: 24px;
+        line-height: 32px;
+      }
+  
+      .secondary {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .form {
+        width: 100%;
+        height: 56px;
+        margin-top: 32px;
+  
+        display: flex;
+        flex-direction: row;
+  
+        #signUp {
+          width: 176px;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    border: 1px solid $colorGrayLight;
+    border-radius: 16px;
+    background-color: $colorBackgroundMain;
+
+    outline: none;
+    
+    color: $colorGrayMain;
+    font-family: 'Inter';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    transition: border-color .3s ease;
+
+    &:focus,
+    &:hover {
+      border-color: $colorGrayMain;
+    }
+  }
+
+  span {
+    &.primary {
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    &.secondary {
+      font-size: 14px;
+      color: $colorGrayMain;
+    }
+    
+    mark {
+      background-color: transparent;
+      color: $colorGreenMain;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    border-radius: 16px;
+    background-color: $colorGreenMain;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $colorBackgroundMain;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: filter .3s ease, background-color .3s ease;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      filter: brightness(.9);
+    }
+
+    &.disabled {
+      pointer-events: none;
+      background-color: $colorGrayLight;
+    }
+  }
+
+  .btn-secondary {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    border: 1px solid $colorGraySecond;
+    border-radius: 16px;
+    background-color: $colorBackgroundMain;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $colorBlackMain;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color .3s ease;
+
+    &:hover {
+      border-color: $colorGrayLight;
+    }
+
+    &:active {
+      background-color: $colorGraySecond;
+    }
+  }
+
+  .widgetComponent {
+    box-sizing: border-box;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  // ------ Components ------
+
+  .widgetAlert {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 24px;
+    z-index: 2;
+    user-select: text;
+  
+    width: 100%;
+    padding: 16px 32px;
+  
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: 'Inter';
+    color: $colorBackgroundMain;
+  
+    display: flex;
+    align-items: center;
+  
+    background-color: rgba($colorGreenMain, .9);
+    border-radius: 10px;
+  
+    * { box-sizing: border-box; }
+  
+    &.error {
+      background-color: rgba($colorRedMain, .9);
+      color: $colorBackgroundMain;
+    }
+    &.info {
+      background-color: rgba($colorBlueMain, .9);
+      color: $colorBackgroundMain;
+    }
+  
+    .closeAlert {
+      padding: 0 32px;
+      position: absolute;
+      right: 0;
+  
+      cursor: pointer;
+      
+      font-size: 16px;
+      user-select: none;
+    }
+  
+    .icon {
+      position: absolute;
+      left: 0;
+  
+      opacity: .7;
+  
+      font-size: 24px;
+    }
+  }
+
+  .stepProgress {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+  
+    color: $colorGrayMain;
+    font-family: 'Inter';
+    font-size: 14px;
+  
+    .step {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+  
+      font-weight: 400;
+      
+      .name {
+        height: 40px;
+  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        span {
+          width: 25px;
+          height: 25px;
+  
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          font-weight: 600;
+          border: 1px solid $colorGraySecond;
+          border-radius: 50%;
+          background-color: $colorBackgroundMain;
+  
+          transition: width .3s ease-out, height .3s ease-out;
+        }
+      }
+  
+      .description {
+        height: 30px;
+  
+        display: flex;
+        align-items: center;
+  
+        transition: font-size .1s ease-out;
+      }
+  
+      &.active {
+        .name {
+          span {
+            animation: .2s grow;
+            transition: none;
+  
+            width: 33px;
+            height: 33px;
+            border-color: $colorBlackMain;
+            background-color: $colorBlackMain;
+            color: $colorBackgroundMain;
+          }
+        }
+        .description {
+          color: $colorBlackMain;
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+  
+      &.done {
+        .name {
+          span {
+            border-color: $colorBlackMain;
+            background-color: $colorBlackMain;
+            color: $colorBackgroundMain;
+          }
+        }
+        .description {
+          color: $colorBlackMain;
+        }
+      }
+    }
+  
+    .bar {
+      height: 1px;
+      background-color: $colorGraySecond;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        background-color: $colorBlackMain;
+  
+        transition: width .3s ease-out;
+      }
+  
+      &.active {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  
+    @keyframes grow {
+      0% { transform: scale(1); }
+      80% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  }
+
+  .processButton {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    margin: 24px 0;
+
+    .icon {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .fileInputLabel {
+    width: 100%;
+    padding-bottom: 8px;
+    font-size: 14px;
+    color: $colorGrayMain;
+  }
+
+  .platformSelectLabel {
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 8px;
+    font-size: 14px;
+    color: $colorGrayMain;
+  }
+
+  .fileInput {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: $colorBackgroundMain;
+    border-radius: 48px;
+
+    transition: height 1s cubic-bezier(0,.5,0,1), border-radius 1s ease, background-color 1s ease !important;
+
+    .dashed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      
+      rect {
+        stroke-linecap: round;
+        transition: stroke-dasharray .3s ease, stroke-dashoffset .3s ease, stroke .3s ease;
+      }
+    }
+
+    &.hover,
+    &:hover {
+      .dashed {
+        rect {
+          stroke: $colorGreenMain;
+          stroke-dashoffset: 1.5%;
+          stroke-dasharray: 6% 0%;
+        }
+      }
+    }
+
+    &.error {
+      .dashed {
+        rect {
+          stroke: $colorRedMain !important;
+        }
+      }
+    }
+
+    &.componentCollapse {
+      height: 72px;
+      padding: 0;
+      padding-left: 20px;
+
+      border-radius: 16px;
+      background-color: $colorGraySecond;
+
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      overflow: hidden;
+
+      .dashed {
+        transition: opacity .3s ease;
+        opacity: 0;
+      }
+
+      .icon {
+        font-size: 32px;
+        margin: 0;
+      }
+
+      .fileInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+
+        .primary {
+          margin-bottom: 8px;
+        }
+      }
+
+      .cancel {
+        height: 72px;
+        width: 72px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        .icon {
+          font-size: 16px;
+          opacity: .8;
+        }
+
+        &:hover {
+          .icon {
+            opacity: 1;
+            color: $colorRedMain;
+          }
+        }
+      }
+    }
+
+    .ring {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 19px;
+
+      .progressRing {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        font-size: 24px;
+        font-family: 'JetBrains Mono';
+      
+        span {
+          position: absolute;
+        }
+      }
+    }
+
+    input.file {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 0;
+      opacity: 0;
+
+      cursor: pointer;
+    }
+
+    .icon {
+      margin-bottom: 16px;
+
+      font-size: 72px;
+    }
+  }
+
+  .platformSelect {
+    width: 100%;
+
+    .dropdown {
+      user-select: none;
+      position: relative;
+    
+      font-family: 'Inter';
+      font-size: 16px;
+      font-weight: 400;
+      color: $colorBlackMain;
+    
+      .button {
+        box-sizing: border-box;
+        width: 100%;
+        height: 56px;
+        padding-left: 20px;
+        padding-right: 16px;
+    
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        background-color: $colorBackgroundMain;
+        border: 1px solid $colorGrayLight;
+        border-radius: 16px;
+    
+        transition: border-color .3s ease;
+    
+        .arrow {
+          transition: transform .2s ease;
+        }
+    
+        .icon {
+          margin-right: 6px;
+        }
+    
+        &:hover {
+          border-color: $colorGrayMain;
+        }
+      }
+    
+      .optionsContainer {
+        box-sizing: border-box;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+    
+        position: absolute;
+        width: 100%;
+        padding: 8px;
+    
+        background-color: $colorBackgroundMain;
+        box-shadow: 0px 4px 16px rgba(6, 11, 8, 0.12);
+        border-radius: 16px;
+    
+        transition: visibility .3s ease, opacity .3s ease;
+        
+        .option {
+          box-sizing: border-box;
+          width: 100%;
+          height: 48px;
+          padding: 0 20px;
+    
+          display: flex;
+          align-items: center;
+    
+          border-radius: 12px;
+    
+          transition: background-color .3s ease, color .3s ease;
+    
+          .icon {
+            margin-right: 6px;
+          }
+    
+          &:hover {
+            background-color: $colorGraySecond;
+            color: $colorBlueMain;
+          }
+        }
+      }
+    
+      &.open {
+        .button {
+          border-color: $colorGrayMain;
+    
+          .arrow {
+            transform: rotate(-180deg);
+          }
+        }
+        .optionsContainer {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .widgetProgress {
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .text {
+      margin-bottom: 24px;
+      font-size: 32px;
+      line-height: 32px;
+      font-weight: 800;
+    }
+
+    .bar {
+      position: relative;
+      width: 100%;
+      height: 12px;
+      margin-bottom: 12px;
+
+      border-radius: 8px;
+      background-color: $colorGraySecond;
+
+      overflow: hidden;
+      
+      .fill {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 8px;
+        background-color: $colorBlackMain;
+        transition: width .5s ease-out;
+      }
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin: 24px 0;
+
+      display: flex;
+      justify-content: space-around;
+
+      .cancelButton {
+        box-sizing: border-box;
+        width: 48%;
+        height: 56px;
+        padding: 0 24px;
+        min-width: min-content;
+        white-space: nowrap;
+
+        .icon {
+          transform: rotate(90deg);
+        }
+      }
+
+      .downloadButton {
+        box-sizing: border-box;
+        width: 48%;
+        height: 56px;
+        padding: 0 24px;
+
+        min-width: min-content;
+        white-space: nowrap;
+
+        .icon {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .pkWidget {
+
+    .widgetContent {
+      width: 90%;
+    }
+
+    .widgetAlert {
+      font-size: 12px;
+    }
+
+    .stepProgress {
+      .step {
+        .name {
+          font-size: 12px;
+        }
+        .description {
+          font-size: 10px;
+        }
+        &.active {
+          .description {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    span {
+      &.primary {
+        font-size: 12px;
+      }
+      &.secondary {
+        font-size: 10px;
+      }
+    }
+
+    .fileInputLabel {
+      font-size: 12px;
+    }
+    .platformSelectLabel {
+      font-size: 12px;
+    }
+
+    .platformSelect {
+      .dropdown {
+        font-size: 12px;
+      }
+    }
+
+    .btn,
+    .btn-secondary {
+      font-size: 12px;
+    }
+  }
+}
