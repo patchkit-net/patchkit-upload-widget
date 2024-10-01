@@ -1,8 +1,8 @@
+import { FileInputState } from '../main.js';
+import { bitSizeToMB, sleep } from '../utils.js';
+import Component from './Component.js';
 import dashed from './dashed.js';
 import ProgressRing from './ProgressRing.js';
-import { FileInputState } from '../main.js';
-import Component from './Component.js';
-import { sleep, bitSizeToMB } from '../utils.js';
 
 
 export default class FileInput extends Component {

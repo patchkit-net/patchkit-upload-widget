@@ -1,7 +1,7 @@
-import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
 import crypto from 'crypto';
+import express from 'express';
 
 import config from './config.js';
 
@@ -19,10 +19,11 @@ server.listen(config.port, () => {
 });
 
 server.get('/upload', async (req, res) => {
+  const totalSizeBytes = encodeURIComponent(req.query.total_size_bytes);
   const upload = await axios.post(
     `${config.pkEndpoint}/uploads`,
     {
-      total_size_bytes: req.query.total_size_bytes,
+      total_size_bytes: totalSizeBytes,
       storage_type: 'local',
       api_key: config.api_key,
     }
@@ -40,11 +41,12 @@ server.get('/upload', async (req, res) => {
 });
 
 server.get('/createApp', async (req, res) => {
+  const platform = encodeURIComponent(req.query.platform);
   const app = await axios.post(
     `${config.pkEndpoint}/apps`,
     {
       name: crypto.randomBytes(16).toString("hex"),
-      platform: req.query.platform,
+      platform,
       api_key: config.api_key,
     }
   );
@@ -64,8 +66,10 @@ server.get('/createApp', async (req, res) => {
 });
 
 server.get('/process', async (req, res) => {
+  const appSecret = encodeURIComponent(req.query.app_secret);
+  const versionID = encodeURIComponent(req.query.version_id);
   const process = await axios.put(
-    `${config.pkEndpoint}/apps/${req.query.app_secret}/versions/${req.query.version_id}/content_file`,
+    `${config.pkEndpoint}/apps/${appSecret}/versions/${versionID}/content_file`,
     {
       api_key: config.api_key,
       upload_id: req.query.upload_id,
@@ -76,8 +80,9 @@ server.get('/process', async (req, res) => {
 });
 
 server.get('/publish', async (req, res) => {
+  const appSecret = encodeURIComponent(req.query.app_secret);
   const publish = await axios.post(
-    `${config.pkEndpoint}/apps/${req.query.app_secret}/versions/1/publish`,
+    `${config.pkEndpoint}/apps/${appSecret}/versions/1/publish`,
     {
       api_key: config.api_key,
     }
@@ -87,8 +92,9 @@ server.get('/publish', async (req, res) => {
 });
 
 server.get('/fetchApp', async (req, res) => {
+  const appSecret = encodeURIComponent(req.query.app_secret);
   const app = await axios.get(
-    `${config.pkEndpoint}/apps/${req.query.app_secret}?api_key=${config.api_key}`,
+    `${config.pkEndpoint}/apps/${appSecret}?api_key=${config.api_key}`,
     {
       headers: {
         'Cache-Control': 'no-cache',
